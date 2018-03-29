@@ -2,11 +2,14 @@
 
 1. Sign up on Digitalocean [with this link to get 10$ credit for free](https://m.do.co/c/f47f91d0d534)
 
-2. Create a new Droplet 
+2. Create a new Droplet
+
    ![Create Droplet](https://i.imgur.com/KhwfYJQ.png)
    - Select the Docker One-click App
+   
      ![Docker App](https://i.imgur.com/ruTU1lU.png)
    - The smallest Droplet is enough, if you want more performance choose a bigger one
+   
      ![Droplet](https://i.imgur.com/RFH3iX9.png)
    - Choose a datacenter region that's near to you
    - Additional Options: IPv6
