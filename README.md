@@ -1,5 +1,7 @@
 # Easy Nano Node
 
+https://nanotools.github.io/easy-nano-node/
+
 ## Installation
 
 ```
