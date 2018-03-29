@@ -9,7 +9,7 @@ git -C /opt/nanoNodeMonitor pull || git clone https://github.com/nanotools/nanoN
 echo "== Starting Docker containers"
 sudo docker-compose up -d
 
-echo "== Let the fresh node take a deep breath..."
+echo "== Take a deep breath..."
 # we need this as the node is crashing if we go on too fast
 sleep 5s
 
