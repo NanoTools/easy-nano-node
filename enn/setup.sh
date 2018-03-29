@@ -42,8 +42,19 @@ else
   # replace ip
   sed -i -e 's#\[::1\]#enn_nanonode_1#g' /opt/nanoNodeMonitor/modules/config.php
 
+  echo "== Disabling RPC logging"
+  sed -i -e 's#"log_rpc": "true"#"log_rpc": "false"#g' ~/RaiBlocks/config.json
+
   echo "== Opening Nano Node Port"
   sudo ufw allow 7075
+
+  echo "== Restarting Nano node container"
+  sudo docker restart enn_nanonode_1
+
+  echo "== Just some final magic..."
+  # restart because we changed the config.json
+  # and the node might be unresponsive at first
+  sleep 5s
 
   echo ""
 
