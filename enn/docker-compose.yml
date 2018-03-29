@@ -2,6 +2,7 @@ version: '3'
 services:
   monitor:
     image: "php:7.2-apache"
+    restart: "unless-stopped"
     ports:
      - "80:80"
     volumes:
@@ -12,6 +13,6 @@ services:
     ports:
      - "7075:7075/udp"
      - "7075:7075"
-     - "127.0.0.1:7076:7076"
+     - ":::7076:7076"
     volumes:
      - "~:/root"

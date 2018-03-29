@@ -9,38 +9,50 @@ git -C /opt/nanoNodeMonitor pull || git clone https://github.com/nanotools/nanoN
 echo "== Starting Docker containers"
 sudo docker-compose up -d
 
-echo "== Creating wallet"
-wallet=$(docker exec enn_nanonode_1 /usr/bin/rai_node --wallet_create)
+echo "== Let the fresh node take a deep breath..."
+# we need this as the node is crashing if we go on too fast
+sleep 5s
 
-echo "== Creating account"
-account=$(docker exec enn_nanonode_1 /usr/bin/rai_node --account_create --wallet=$wallet | cut -d ' ' -f2)
+if [ -d ~/RaiBlocks ]; then
 
-echo "== Creating monitor config"
-cp /opt/nanoNodeMonitor/modules/config.sample.php /opt/nanoNodeMonitor/modules/config.php
+  echo "== Nano node directory exists, skipping initialization..."
 
-echo "== Modifying the monitor config"
+else
 
-# uncomment account
-sed -i -e 's#// $nanoNodeAccount#$nanoNodeAccount#g' /opt/nanoNodeMonitor/modules/config.php
+  echo "== Creating wallet"
+  wallet=$(docker exec enn_nanonode_1 /usr/bin/rai_node --wallet_create)
 
-# replace account
-sed -i -e "s/xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj/$account/g" /opt/nanoNodeMonitor/modules/config.php
+  echo "== Creating account"
+  account=$(docker exec enn_nanonode_1 /usr/bin/rai_node --account_create --wallet=$wallet | cut -d ' ' -f2)
 
-# uncomment ip
-sed -i -e 's#// $nanoNodeRPCIP#$nanoNodeRPCIP#g' /opt/nanoNodeMonitor/modules/config.php
+  echo "== Creating monitor config"
+  cp /opt/nanoNodeMonitor/modules/config.sample.php /opt/nanoNodeMonitor/modules/config.php
 
-# replace ip
-sed -i -e 's#\[::1\]#enn_nanonode_1#g' /opt/nanoNodeMonitor/modules/config.php
+  echo "== Modifying the monitor config"
 
-echo "== Opening Nano Node Port"
-sudo ufw allow 7075
+  # uncomment account
+  sed -i -e 's#// $nanoNodeAccount#$nanoNodeAccount#g' /opt/nanoNodeMonitor/modules/config.php
 
-echo ""
+  # replace account
+  sed -i -e "s/xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj/$account/g" /opt/nanoNodeMonitor/modules/config.php
 
-echo -e "=== \e[31mYOUR WALLET SEED\e[39m ==="
-echo "Please write down your wallet seed to a piece of paper and store it safely!"
-docker exec enn_nanonode_1 /usr/bin/rai_node --wallet_decrypt_unsafe --wallet=$wallet
-echo -e "=== \e[31mYOUR WALLET SEED\e[39m ==="
+  # uncomment ip
+  sed -i -e 's#// $nanoNodeRPCIP#$nanoNodeRPCIP#g' /opt/nanoNodeMonitor/modules/config.php
+
+  # replace ip
+  sed -i -e 's#\[::1\]#enn_nanonode_1#g' /opt/nanoNodeMonitor/modules/config.php
+
+  echo "== Opening Nano Node Port"
+  sudo ufw allow 7075
+
+  echo ""
+
+  echo -e "=== \e[31mYOUR WALLET SEED\e[39m ==="
+  echo "Please write down your wallet seed to a piece of paper and store it safely!"
+  docker exec enn_nanonode_1 /usr/bin/rai_node --wallet_decrypt_unsafe --wallet=$wallet
+  echo -e "=== \e[31mYOUR WALLET SEED\e[39m ==="
+
+fi
 
 serverip=$(ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -vE '^(192\.168|10\.|172\.1[6789]\.|172\.2[0-9]\.|172\.3[01]\.|127\.0\.0\.1)')
 
