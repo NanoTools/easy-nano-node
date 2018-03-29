@@ -36,6 +36,9 @@ echo "== Opening Nano Node Port"
 sudo ufw allow 7075
 
 echo -e "=== \e[31mYOUR WALLET SEED\e[39m ==="
-echo "Please write your wallet seed to a piece of paper and store it safely!"
+echo "Please write down your wallet seed to a piece of paper and store it safely!"
 docker exec enn_nanonode_1 /usr/bin/rai_node --wallet_decrypt_unsafe --wallet=$wallet
 echo -e "=== \e[31mYOUR WALLET SEED\e[39m ==="
+
+echo ""
+echo "All done!"
