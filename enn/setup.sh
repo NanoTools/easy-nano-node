@@ -13,7 +13,7 @@ echo "== Let the fresh node take a deep breath..."
 # we need this as the node is crashing if we go on too fast
 sleep 5s
 
-if [ -d ~/RaiBlocks ]; then
+if [ -f /opt/nanoNodeMonitor/modules/config.php ]; then
 
   echo "== Nano node directory exists, skipping initialization..."
 
