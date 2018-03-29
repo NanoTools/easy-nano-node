@@ -1,6 +1,6 @@
 # Setup a Nano Node on DigitalOcean
 
-1. Sign up on Digitalocean [with this link to get 10$ credit for free](https://m.do.co/c/f47f91d0d534)
+1. Sign up on DigitalOcean [with this link to get 10$ credit for free](https://m.do.co/c/f47f91d0d534)
 
 2. Create a new Droplet
 
