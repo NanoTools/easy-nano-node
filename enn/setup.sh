@@ -6,6 +6,10 @@ cd "$(dirname "$0")"
 echo "== Cloning Nano Node Monitor"
 git -C /opt/nanoNodeMonitor pull || git clone https://github.com/nanotools/nanoNodeMonitor.git /opt/nanoNodeMonitor
 
+echo "== Updating Docker images"
+sudo docker pull nanocurrency/nano
+sudo docker pull php:7.2-apache
+
 echo "== Starting Docker containers"
 sudo docker-compose up -d
 
