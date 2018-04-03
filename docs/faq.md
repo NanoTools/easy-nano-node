@@ -14,7 +14,11 @@ The Nano node has a configurable receive minimum which is at default 1 Nano. You
 ### How do I send Nano from the node account?
 The easiest way is entering the account seed into a web wallet like [NanoVault](https://nanovault.io/). You can also use the [RPC interface](https://github.com/nanocurrency/raiblocks/wiki/RPC-protocol#send).
 
-#### [Questions not answered?](https://github.com/NanoTools/easy-nano-node/issues)
+### Node is stuck / unresponsive
+Restart the Node container with `sudo docker restart enn_nanonode_1`.
+
+### Questions not answered?
+You can [open an issue here](https://github.com/NanoTools/easy-nano-node/issues) or write us at the [Nano Discord](https://chat.nano.org/), we're always helpful!
 
 ## Links
 
