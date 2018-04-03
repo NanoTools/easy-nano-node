@@ -29,6 +29,6 @@ Restart the Node container with `sudo docker restart enn_nanonode_1`.
 ### Questions not answered?
 You can [open an issue here](https://github.com/NanoTools/easy-nano-node/issues) or write us at the [Nano Discord](https://chat.nano.org/), we're always helpful!
 
-## Links
+## Further reading
 
 - [Official Wiki](https://github.com/nanocurrency/raiblocks/wiki)
