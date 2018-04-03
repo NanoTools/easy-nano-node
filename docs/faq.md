@@ -2,6 +2,15 @@
 
 ## Q&A
 
+### Updating the node
+Just enter the install command again:
+
+```
+bash <(curl -s https://raw.githubusercontent.com/nanotools/easy-nano-node/master/install.sh)
+```
+
+Et voilà! Have a look at the Node Monitor, you should run the newest Nano Node version.
+
 ### Node isn't synced
 Let it node sync the full ledger, this can take some hours. You can always compare to the current block count [here](https://www.nanode.co/blocks).
 
