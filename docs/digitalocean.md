@@ -23,11 +23,9 @@
 5. You'll be prompted to change your password, choose a strong one
 
 6. Enter the following command to start the setup:
-
 ```
 bash <(curl -s https://raw.githubusercontent.com/nanotools/easy-nano-node/master/install.sh)
 ```
-
 7. Done! Please have a look at the [FAQ](faq.md).
 
 ## Support
