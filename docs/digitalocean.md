@@ -18,7 +18,7 @@
 3. You'll get an email with the initial password for the root user and the Droplet IP
 
 4. Connect to your Droplet via SSH
-   You can use `ssh root@DROPLET-IP` on Mac/Linux or [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) on Windows
+   You can use `ssh root@DROPLET-IP` on Mac/Linux or [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) on Windows ([PuTTY Tutorial](https://kb.site5.com/shell-access-ssh/putty/))
 
 5. You'll be prompted to change your password, choose a strong one
 
@@ -27,3 +27,5 @@
 ```
 bash <(curl -s https://raw.githubusercontent.com/nanotools/easy-nano-node/master/install.sh)
 ```
+
+Please have a look at the [FAQ](faq.md).

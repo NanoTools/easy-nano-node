@@ -29,3 +29,5 @@ sudo apt-get install -y docker-ce
 ```
 bash <(curl -s https://raw.githubusercontent.com/nanotools/easy-nano-node/master/install.sh)
 ```
+
+Please have a look at the [FAQ](faq.md).
