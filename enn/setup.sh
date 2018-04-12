@@ -69,7 +69,7 @@ else
 
 fi
 
-serverip=$(ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -vE '^(192\.168|10\.|172\.1[6789]\.|172\.2[0-9]\.|172\.3[01]\.|127\.0\.0\.1)')
+serverip=$(ip route get 8.8.8.8 | awk '{ print $NF; exit }')
 
 echo ""
 echo "All done! *yay*"
