@@ -51,6 +51,9 @@ else
 
   echo "== Opening Nano Node Port"
   sudo ufw allow 7075
+  
+  echo "== Denying RPC Port"
+  sudo ufw deny 7076
 
   echo "== Restarting Nano node container"
   sudo docker restart enn_nanonode_1
