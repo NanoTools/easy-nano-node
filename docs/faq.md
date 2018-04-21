@@ -2,8 +2,10 @@
 
 ## Q&A
 
-### Updating the node
-Just enter the install command again:
+### Updating
+Updates are done automatically!
+
+But you can always enter the install command again:
 
 ```
 bash <(curl -s https://raw.githubusercontent.com/nanotools/easy-nano-node/master/install.sh)
