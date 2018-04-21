@@ -41,9 +41,6 @@ else
   echo "== Creating account"
   account=$(docker exec enn_nanonode_1 /usr/bin/rai_node --account_create --wallet=$wallet | cut -d ' ' -f2)
 
-  echo "== Creating monitor config"
-  cp /opt/nanoNodeMonitor/modules/config.sample.php ~/nanoNodeMonitor/config.php
-
   echo "== Modifying the monitor config"
 
   # uncomment account
