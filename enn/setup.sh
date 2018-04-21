@@ -14,16 +14,21 @@ echo "== Take a deep breath..."
 # we need this as the node is crashing if we go on too fast
 sleep 5s
 
+# this is the old config
 if [ -f /opt/nanoNodeMonitor/modules/config.php ]; then
 
   echo "== Old monitor config found, replacing..."
   cp /opt/nanoNodeMonitor/modules/config.php ~/nanoNodeMonitor/config.php
 
+  echo "== Removing old monitor"
+  rm -r /opt/nanoNodeMonitor
+
   # this also means we already inited
   touch /opt/easy-nano-node/init
 
 fi
-  
+
+# check if init already done
 if [ -f /opt/easy-nano-node/init ]; then
 
   echo "== Initialization already done, skipping ..."
@@ -74,7 +79,7 @@ else
 
   echo -e "=== \e[31mYOUR WALLET SEED\e[39m ==="
   echo "Please write down your wallet seed to a piece of paper and store it safely!"
-  docker exec enn_nanonode_1 /usr/bin/rai_node --wallet_decrypt_unsafe --wallet=$wallet
+  docker exec enn_nanonode_1 /usr/bin/rai_node --wallet_decrypt_unsafe --wallet=$wallet | grep "Seed: "
   echo -e "=== \e[31mYOUR WALLET SEED\e[39m ==="
 
   # we're done, save for later
@@ -82,6 +87,7 @@ else
 
 fi
 
+# get that nasty IP
 serverip=$(ip route get 8.8.8.8 | awk '{ print $NF; exit }')
 
 echo ""
