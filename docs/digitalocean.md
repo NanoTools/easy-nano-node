@@ -8,9 +8,10 @@
    - Select the Docker One-click App
    
      ![Docker App](https://i.imgur.com/ruTU1lU.png)
-   - The smallest Droplet is enough, if you want more performance choose a bigger one
+   - We suggest at least the 2 GB droplet because you'll need the 2 TB transfer. 
+     If you want more performance choose a bigger one
    
-     ![Droplet](https://i.imgur.com/RFH3iX9.png)
+     ![Droplet](https://i.imgur.com/pLaZ7Xj.png)
    - Choose a datacenter region that's near to you
    - Additional Options: IPv6
    - Click create and wait till it's ready!
