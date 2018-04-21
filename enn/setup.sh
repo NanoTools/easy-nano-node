@@ -3,12 +3,9 @@
 # goto script dir
 cd "$(dirname "$0")"
 
-echo "== Cloning Nano Node Monitor"
-git -C /opt/nanoNodeMonitor pull || git clone https://github.com/nanotools/nanoNodeMonitor.git /opt/nanoNodeMonitor
-
 echo "== Updating Docker images"
 sudo docker pull nanocurrency/nano
-sudo docker pull php:7.2-apache
+sudo docker pull nanotools/nanonodemonitor
 
 echo "== Starting Docker containers"
 sudo docker-compose up -d
@@ -19,7 +16,17 @@ sleep 5s
 
 if [ -f /opt/nanoNodeMonitor/modules/config.php ]; then
 
-  echo "== Nano node directory exists, skipping initialization..."
+  echo "== Old monitor config found, replacing..."
+  cp /opt/nanoNodeMonitor/modules/config.php ~/nanoNodeMonitor/config.php
+
+  # this also means we already inited
+  touch /opt/easy-nano-node/init
+
+fi
+  
+if [ -f /opt/easy-nano-node/init ]; then
+
+  echo "== Initialization already done, skipping ..."
 
 else
 
@@ -30,21 +37,21 @@ else
   account=$(docker exec enn_nanonode_1 /usr/bin/rai_node --account_create --wallet=$wallet | cut -d ' ' -f2)
 
   echo "== Creating monitor config"
-  cp /opt/nanoNodeMonitor/modules/config.sample.php /opt/nanoNodeMonitor/modules/config.php
+  cp /opt/nanoNodeMonitor/modules/config.sample.php ~/nanoNodeMonitor/config.php
 
   echo "== Modifying the monitor config"
 
   # uncomment account
-  sed -i -e 's#// $nanoNodeAccount#$nanoNodeAccount#g' /opt/nanoNodeMonitor/modules/config.php
+  sed -i -e 's#// $nanoNodeAccount#$nanoNodeAccount#g' ~/nanoNodeMonitor/config.php
 
   # replace account
-  sed -i -e "s/xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj/$account/g" /opt/nanoNodeMonitor/modules/config.php
+  sed -i -e "s/xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj/$account/g" ~/nanoNodeMonitor/config.php
 
   # uncomment ip
-  sed -i -e 's#// $nanoNodeRPCIP#$nanoNodeRPCIP#g' /opt/nanoNodeMonitor/modules/config.php
+  sed -i -e 's#// $nanoNodeRPCIP#$nanoNodeRPCIP#g' ~/nanoNodeMonitor/config.php
 
   # replace ip
-  sed -i -e 's#\[::1\]#enn_nanonode_1#g' /opt/nanoNodeMonitor/modules/config.php
+  sed -i -e 's#\[::1\]#enn_nanonode_1#g' ~/nanoNodeMonitor/config.php
 
   echo "== Disabling RPC logging"
   sed -i -e 's#"log_rpc": "true"#"log_rpc": "false"#g' ~/RaiBlocks/config.json
@@ -69,6 +76,9 @@ else
   echo "Please write down your wallet seed to a piece of paper and store it safely!"
   docker exec enn_nanonode_1 /usr/bin/rai_node --wallet_decrypt_unsafe --wallet=$wallet
   echo -e "=== \e[31mYOUR WALLET SEED\e[39m ==="
+
+  # we're done, save for later
+  touch /opt/easy-nano-node/init
 
 fi
 

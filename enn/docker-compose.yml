@@ -1,18 +1,23 @@
 version: '3'
 services:
   monitor:
-    image: "php:7.2-apache"
+    image: "nanotools/nanonodemonitor"
     restart: "unless-stopped"
     ports:
      - "80:80"
     volumes:
-     - "/opt/nanoNodeMonitor:/var/www/html"
+     - "~:/opt"
   nanonode:
     image: "nanocurrency/nano"
     restart: "unless-stopped"
     ports:
      - "7075:7075/udp"
      - "7075:7075"
-     - ":::7076:7076"
+     - "::1:7076:7076"
     volumes:
      - "~:/root"
+  watchtower:
+    image: "v2tec/watchtower"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    command: "enn_monitor_1 enn_nanonode_1"
