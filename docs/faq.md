@@ -11,6 +11,9 @@ bash <(curl -s https://raw.githubusercontent.com/nanotools/easy-nano-node/master
 
 Et voilà! Have a look at the Node Monitor, you should run the newest Nano Node version.
 
+### Node Monitor Overview
+You have no idea what all those numbers and fields in the node monitor mean? Have a look [at the official Wiki](https://github.com/NanoTools/nanoNodeMonitor/wiki/Monitor-Overview).
+
 ### Node isn't synced
 Let it node sync the full ledger, this can take some hours. You can always compare to the current block count [here](https://www.nanode.co/blocks).
 
