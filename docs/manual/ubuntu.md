@@ -23,6 +23,7 @@ sudo apt-get install -y docker-ce
 5. Create a directory called _nano_ and go inside it: `mkdir nano && cd nano`
 
 6. Create a new file called _docker-compose.yml_ with the following contents:
+
 ```
 version: '3'
 services:
