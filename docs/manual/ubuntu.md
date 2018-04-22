@@ -47,13 +47,13 @@ services:
 
 7. Nice! Now execute `sudo docker-compose up -d` to start everything.
 
-8. Create a new wallet by exceucting:
+8. Create a new wallet by executing:
 ```
 sudo docker exec nano_node_1 /usr/bin/rai_node --wallet_create
 ```
 You should get a wallet ID which you need in the next step.
 
-9. Change the WALLETID and creata a new account by executing:
+9. Change the WALLETID and create a a new account by executing:
 ```
 sudo docker exec nano_node_1 /usr/bin/rai_node --account_create --wallet=<WALLETID>
 ```
