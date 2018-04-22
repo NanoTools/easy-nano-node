@@ -23,7 +23,6 @@ sudo apt-get install -y docker-ce
 5. Create a directory called _nano_ and go inside it: `mkdir nano && cd nano`
 
 6. Create a new file called _docker-compose.yml_ with the following contents:
-
 ```
 version: '3'
 services:
@@ -45,30 +44,30 @@ services:
      - "~:/root"
 ```
 
-3. Nice! Now execute `sudo docker-compose up -d` to start everything.
+7. Nice! Now execute `sudo docker-compose up -d` to start everything.
 
-4. Create a new wallet by exceucting:
+8. Create a new wallet by exceucting:
 ```
 sudo docker exec nano_node_1 /usr/bin/rai_node --wallet_create
 ```
 You should get a wallet ID which you need in the next step.
 
-5. Change the WALLETID and creata a new account by executing:
+9. Change the WALLETID and creata a new account by executing:
 ```
 sudo docker exec nano_node_1 /usr/bin/rai_node --account_create --wallet=<WALLETID>
 ```
 You get a new Nano address starting with xrb_1234... back.
 
-6. Get you wallet seed with:
+10. Get you wallet seed with:
 ```
 sudo docker exec nano_node_1 /usr/bin/rai_node --wallet_decrypt_unsafe --wallet=<WALLETID>
 ```
 
-6. Inside your home directory you will find a new directory called _nanoNodeMonitor_, edit the _config.php_: `cd ~/nanoNodeMonitor`
+11. Inside your home directory you will find a new directory called _nanoNodeMonitor_, edit the _config.php_: `cd ~/nanoNodeMonitor`
 
-7. You will have to change the node IP to `nano_node_1` and the address to the address from step 5. Edit the other things as well if you want to.
+12. You will have to change the node IP to `nano_node_1` and the address to the address from step 5. Edit the other things as well if you want to.
 
-8. Done! Please have a look at the [FAQ](faq.md).
+13. Done! Please have a look at the [FAQ](faq.md).
 
 ## Fast Sync
 
