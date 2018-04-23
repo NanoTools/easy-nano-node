@@ -76,34 +76,32 @@ If you sync from scratch it can take up to 3 days for the node to sync the ledge
 
 1. **Make sure that you have your seed stored safely!** It will be overwritten with this process.
 
-2. Get the direct download link from [Yandex.Disk](https://yadi.sk/d/fcZgyES73Jzj5T) or [Google Drive](https://drive.google.com/drive/folders/1sP1z9S011f1W_0nK1KJ-UCJbjaNmk8GQ)
+2. SSH to your server, stop the node (`sudo docker stop nano_node_1`) and go to the `~/RaiBlocks` directory
 
-3. SSH to your server, stop the node (`sudo docker stop nano_node_1`) and go to the `~/RaiBlocks` directory
-
-4. Backup your old ledger file with:
+3. Backup your old ledger file with:
 ```
 mv data.ldb data.ldb.bak
 mv data.ldb-lock data.ldb-lock.bak
 ```
 
-5. Download the file with wget:
+4. Download the file with wget:
 ```
-wget "https://DOWNLOADLINK" -O ledger.7z
+wget "https://nanonode.ninja/api/ledger/download" -O ledger.7z
 ```
 
-6. Install 7zip
+5. Install 7zip
 ```
 sudo apt-get install p7zip-full
 ```
 
-7. Unzip it with:
+6. Unzip it with:
 ```
 7z x ledger.7z
 ```
 
-8. Start your node again with `sudo docker start nano_node_1`
+7. Start your node again with `sudo docker start nano_node_1`
 
-9. Restore your seed with:
+8. Restore your seed with:
 ```
 sudo docker exec nano_node_1 /usr/bin/rai_node --wallet_create
 ```
@@ -117,7 +115,7 @@ sudo docker exec nano_node_1 /usr/bin/rai_node --account_create  --wallet=<WALLE
 ```
 You should see your previous address again.
 
-10. Done!
+9. Done!
 
 
 ## Support
