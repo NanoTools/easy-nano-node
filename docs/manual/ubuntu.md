@@ -68,7 +68,7 @@ sudo docker exec nano_node_1 /usr/bin/rai_node --wallet_decrypt_unsafe --wallet=
 
 12. You will have to change the node IP to `nano_node_1` and the address to the address from step 5. Edit the other things as well if you want to.
 
-13. Done! Please have a look at the [FAQ](faq.md).
+13. Done! Please have a look at the [FAQ](../faq.md).
 
 ## Fast Sync
 
