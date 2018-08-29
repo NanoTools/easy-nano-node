@@ -19,7 +19,8 @@
 3. You'll get an email with the initial password for the root user and the Droplet IP
 
 4. Connect to your Droplet via SSH
-   You can use `ssh root@DROPLET-IP` on Mac/Linux or [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) on Windows ([PuTTY Tutorial](https://kb.site5.com/shell-access-ssh/putty/))
+   - **Windows:** With [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) ([Tutorial](https://www.digitalocean.com/docs/droplets/how-to/connect-with-ssh/putty/))
+   - **macOS / Linux:** SSH in Terminal ([Tutorial](https://www.digitalocean.com/docs/droplets/how-to/connect-with-ssh/openssh/))
 
 5. You'll be prompted to change your password, choose a strong one
 
