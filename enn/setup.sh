@@ -3,6 +3,18 @@
 # goto script dir
 cd "$(dirname "$0")"
 
+echo "== Checking Prerequisites"
+# check if docker and docker-compose are installed
+test -f "$(which docker )" || { echo "Docker is not installed"; exit 1; }
+test -f "$(which docker-compose )" || { echo "Docker Compose is not installed"; exit 1; }
+
+# check if the port 80 is already in use
+# we need it for the node monitor
+if lsof -Pi :80 -sTCP:LISTEN -t >/dev/null ; then
+  echo "The Port 80 is already in use."
+  exit 1
+fi
+
 echo "== Updating Docker images"
 sudo docker pull nanocurrency/nano
 sudo docker pull nanotools/nanonodemonitor
