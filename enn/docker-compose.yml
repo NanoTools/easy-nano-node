@@ -18,6 +18,7 @@ services:
      - "~:/root"
   watchtower:
     image: "v2tec/watchtower"
+    restart: "unless-stopped"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
     command: "enn_monitor_1 enn_nanonode_1"
