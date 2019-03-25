@@ -86,7 +86,7 @@ mv data.ldb-lock data.ldb-lock.bak
 
 4. Download the file with wget:
 ```
-wget "https://nanonode.ninja/api/ledger/download" -O ledger.7z
+wget "https://mynano.ninja/api/ledger/download" -O ledger.7z
 ```
 
 5. Install 7zip
