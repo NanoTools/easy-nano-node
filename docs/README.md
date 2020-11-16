@@ -1,5 +1,7 @@
 # Setup a Nano Node
 
+# ❗ Archived: Follow the [official docs](https://docs.nano.org/running-a-node/docker-management/) for instructions!
+
 ## With Easy-Nano-Node
 
 Please choose your system below.
