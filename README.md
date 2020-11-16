@@ -1,5 +1,7 @@
 # Easy Nano Node
 
+# ❗ Archived: Follow the [official docs](https://docs.nano.org/running-a-node/docker-management/) for instructions!
+
 https://nanotools.github.io/easy-nano-node/
 
 Nano nodes made simple!
